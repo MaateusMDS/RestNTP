@@ -14,6 +14,12 @@ app.post('/createUser', UserController.createUser);
 
 app.post('/createPost', PostController.createPost);
 
+app.get('/listPost/:id', PostController.listPost);
+
+app.put('/updatePost/:id', PostController.updatePost);
+
+app.delete('/deletePost/:id', PostController.deletePost);
+
 app.listen(PORT, () => {
   console.log(`Server is running ${PORT}`);
 });
