@@ -1,4 +1,4 @@
-import {Request, Response, response} from 'express';
+import {Request, Response} from 'express';
 import { prisma } from '../database';
 
 export default {
@@ -43,6 +43,33 @@ export default {
 
     } catch (err) {
       return response.json({message: err.message});
+    }
+  },
+  async deleteUser(request: Request, response: Response){
+    try {
+
+      const {id} = request.params;
+
+      const userExist = await prisma.user.findUnique({where: {id: Number(id)}});
+
+      if (!userExist){
+        return response.json({
+          error: true,
+          message: 'Nenhum usuário com este ID foi encontrado.'
+        });
+      }
+
+      const user = await prisma.user.delete({where: {id: Number(id)}});
+      return response.json({
+        error: true,
+        message: 'Usuário foi deletado com sucesso!',
+        user
+      });
+
+    } catch (err) {
+      return response.json({
+        message: err.message
+      });
     }
   }
 };

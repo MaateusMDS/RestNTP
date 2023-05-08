@@ -7,12 +7,14 @@ app.use(Express.json());
 const PORT= 8000;
 
 app.get('/', (request, response) => {
-  return response.send({message: 'Hello World'});
+  return response.send({message: 'Hello World!'});
 });
 
 app.post('/createUser', UserController.createUser);
 
 app.get('/listUsers', UserController.listAllUsers);
+
+app.delete('/deleteUser/:id', UserController.deleteUser);
 
 app.post('/createPost', PostController.createPost);
 
