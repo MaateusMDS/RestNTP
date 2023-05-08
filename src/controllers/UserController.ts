@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import {Request, Response, response} from 'express';
 import { prisma } from '../database';
 
 export default {
@@ -26,6 +26,19 @@ export default {
         error: false,
         message: 'Sucesso! Usuário criado.',
         user
+      });
+
+    } catch (err) {
+      return response.json({message: err.message});
+    }
+  },
+  async listAllUsers(request: Request, response: Response){
+    try {
+      const users = await prisma.user.findMany({});
+
+      return response.json({
+        error: false,
+        users
       });
 
     } catch (err) {

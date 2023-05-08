@@ -12,6 +12,8 @@ app.get('/', (request, response) => {
 
 app.post('/createUser', UserController.createUser);
 
+app.get('/listUsers', UserController.listAllUsers);
+
 app.post('/createPost', PostController.createPost);
 
 app.get('/listPost/:id', PostController.listPost);

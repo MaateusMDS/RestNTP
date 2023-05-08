@@ -104,7 +104,7 @@ export default {
 
       return response.json({
         error: false,
-        messager: 'Sucesso! Post foi removido',
+        messager: 'Sucesso! Post foi removido.',
         post
       });
 
