@@ -92,7 +92,7 @@ export default {
         return response.json(
           {
             error: true,
-            message: 'Erro. Não foi possível encontrar o post'
+            message: 'Erro! Não foi possível encontrar o post'
           }
         );
       }
